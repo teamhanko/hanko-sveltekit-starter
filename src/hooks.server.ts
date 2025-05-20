@@ -4,6 +4,23 @@ import { env } from "$env/dynamic/public";
 
 const hankoApiUrl = env.PUBLIC_HANKO_API_URL;
 
+
+export const handle: Handle = async ({ event, resolve }) => {
+  const verified = await authenticatedUser(event);
+
+  if (event.url.pathname.startsWith("/dashboard") && !verified) {
+    throw redirect(303, "/");
+  }
+
+  if (event.url.pathname.startsWith("/profile") && !verified) {
+    throw redirect(303, "/");
+  }
+
+  const response = await resolve(event);
+  return response;
+};
+
+
 const authenticatedUser = async (event: RequestEvent) => {
   const { cookies } = event;
   const cookieToken = cookies.get("hanko");
@@ -30,20 +47,5 @@ const authenticatedUser = async (event: RequestEvent) => {
     console.log(error)
     return false;
   }
-};
-
-export const handle: Handle = async ({ event, resolve }) => {
-  const verified = await authenticatedUser(event);
-
-  if (event.url.pathname.startsWith("/dashboard") && !verified) {
-    throw redirect(303, "/");
-  }
-
-  if (event.url.pathname.startsWith("/profile") && !verified) {
-    throw redirect(303, "/");
-  }
-
-  const response = await resolve(event);
-  return response;
 };
 
