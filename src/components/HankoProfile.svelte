@@ -12,6 +12,6 @@
         // handle error
       });
     });
-  </script>
+</script>
   
-  <hanko-profile />
+<hanko-profile />

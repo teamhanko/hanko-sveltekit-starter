@@ -4,7 +4,6 @@ import { env } from "$env/dynamic/public";
 
 const hankoApiUrl = env.PUBLIC_HANKO_API_URL;
 
-
 const authenticatedUser = async (event: RequestEvent) => {
   const { cookies } = event;
   const cookieToken = cookies.get("hanko");
@@ -47,3 +46,4 @@ export const handle: Handle = async ({ event, resolve }) => {
   const response = await resolve(event);
   return response;
 };
+
