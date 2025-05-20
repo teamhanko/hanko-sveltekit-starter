@@ -2,12 +2,12 @@
     import "../../global.css"
 
     import StarterInfo from "../../starter components/starterInfo.svelte";
+    import HankoProfile from "../../components/HankoProfile.svelte";
     import StarterHeader from "../../starter components/starterHeader.svelte";
-    import StarterDashboard from "../../starter components/starterDashboard.svelte";
 </script>
 
 <div>
     <StarterInfo/>
+    <HankoProfile/>
     <StarterHeader/>
-    <StarterDashboard/>
 </div>

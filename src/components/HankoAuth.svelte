@@ -1,4 +1,6 @@
 <script>
+  import "./hanko-style.css"
+
   import { onMount } from "svelte";
   import { goto } from "$app/navigation";
   import { register } from "@teamhanko/hanko-elements";
@@ -16,4 +18,4 @@
   });
 </script>
 
-<hanko-auth on:onAuthFlowCompleted={redirectAfterLogin} />
+<hanko-auth on:onSessionCreated={redirectAfterLogin} />
